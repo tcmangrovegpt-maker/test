@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="คู่มือปลูกป่าชายเลนแบบง่าย ๆ สำหรับผู้เริ่มต้น ตั้งแต่เลือกพื้นที่ เลือกพันธุ์ ไปจนถึงการดูแลหลังปลูก" />
+  <title>ปลูกป่าชายเลนง่าย ๆ | Mangrove Starter Guide</title>
+  <style>
+    :root {
+      --ink: #14332f;
+      --muted: #5d746f;
+      --paper: #f7fbf8;
+      --card: rgba(255,255,255,.86);
+      --green: #167a62;
+      --green-dark: #0d5a48;
+      --lime: #dff3c8;
+      --sand: #f1e6c9;
+      --line: rgba(20,51,47,.12);
+      --shadow: 0 18px 50px rgba(18, 71, 59, .12);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans Thai", Tahoma, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(223,243,200,.9), transparent 32%),
+        radial-gradient(circle at 90% 0%, rgba(157,222,203,.5), transparent 30%),
+        var(--paper);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: rgba(247,251,248,.78);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand { font-weight: 800; letter-spacing: -.02em; text-decoration: none; }
+    .brand span { color: var(--green); }
+    .nav-links { display: flex; gap: 18px; font-size: .95rem; }
+    .nav-links a { text-decoration: none; color: var(--muted); }
+    .nav-links a:hover { color: var(--green-dark); }
+
+    .hero {
+      padding: 84px 0 56px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 42px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--line);
+      color: var(--green-dark);
+      font-weight: 700;
+      font-size: .9rem;
+    }
+    h1 {
+      margin: 18px 0 18px;
+      font-size: clamp(2.7rem, 6vw, 5.4rem);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+      max-width: 900px;
+    }
+    h1 em { color: var(--green); font-style: normal; }
+    .lead { max-width: 720px; font-size: 1.15rem; color: var(--muted); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      text-decoration: none;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .btn-primary { color: white; background: var(--green); border-color: var(--green); }
+    .btn-primary:hover { background: var(--green-dark); }
+    .btn-secondary { background: rgba(255,255,255,.8); }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      border-radius: 34px;
+      background: linear-gradient(160deg, #0f624f, #178169 58%, #6ab397);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -8% -25% 18%;
+      height: 60%;
+      border-radius: 50% 50% 0 0;
+      background: rgba(15, 52, 45, .48);
+      transform: rotate(-5deg);
+    }
+    .hero-card::after {
+      content: "🌱";
+      position: absolute;
+      right: 26px;
+      bottom: 24px;
+      font-size: 7.5rem;
+      filter: drop-shadow(0 10px 14px rgba(0,0,0,.14));
+    }
+    .hero-card > * { position: relative; z-index: 1; }
+    .big-number { font-size: 6rem; font-weight: 900; line-height: .9; letter-spacing: -.07em; }
+    .hero-card p { max-width: 260px; margin: 8px 0 0; color: rgba(255,255,255,.84); }
+
+    section { padding: 56px 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin-bottom: 26px; }
+    .section-head h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.3rem); line-height: 1.1; letter-spacing: -.04em; }
+    .section-head p { max-width: 560px; color: var(--muted); margin: 0; }
+
+    .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .step {
+      min-height: 250px;
+      padding: 22px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(18, 71, 59, .05);
+    }
+    .step-number {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      border-radius: 13px; background: var(--lime); color: var(--green-dark); font-weight: 900;
+    }
+    .step h3 { margin: 34px 0 8px; font-size: 1.08rem; }
+    .step p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .panel {
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.76);
+    }
+    .panel.soft { background: linear-gradient(145deg, var(--sand), #f8f4e9); }
+    .panel h3 { margin-top: 0; font-size: 1.5rem; }
+    .list { display: grid; gap: 14px; margin-top: 20px; }
+    .list-item { display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: start; }
+    .icon { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 12px; background: white; border: 1px solid var(--line); }
+    .list-item strong { display: block; margin-bottom: 2px; }
+    .list-item span { color: var(--muted); font-size: .95rem; }
+
+    .checklist { display: grid; gap: 10px; margin-top: 18px; }
+    .check-row {
+      display: flex; gap: 12px; align-items: center;
+      padding: 14px 16px; border-radius: 14px; background: white; border: 1px solid var(--line);
+      cursor: pointer;
+    }
+    .check-row input { width: 20px; height: 20px; accent-color: var(--green); }
+    .check-row.done span { text-decoration: line-through; color: #8aa09b; }
+    .progress { height: 10px; border-radius: 999px; overflow: hidden; background: rgba(20,51,47,.08); margin-top: 18px; }
+    .progress > div { height: 100%; width: 0%; background: var(--green); transition: width .25s ease; }
+    .progress-copy { margin-top: 8px; color: var(--muted); font-size: .9rem; }
+
+    .notice {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--green);
+      background: rgba(223,243,200,.52);
+      border-radius: 0 16px 16px 0;
+      color: var(--green-dark);
+    }
+
+    footer { padding: 42px 0 64px; color: var(--muted); font-size: .92rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 24px; }
+
+    @media (max-width: 950px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-card { min-height: 320px; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .steps .step:last-child { grid-column: span 2; }
+    }
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .hero { padding-top: 54px; }
+      .grid-2, .steps { grid-template-columns: 1fr; }
+      .steps .step:last-child { grid-column: auto; }
+      .section-head, .footer-inner { align-items: start; flex-direction: column; }
+      .step { min-height: 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">Mangrove <span>Starter</span></a>
+      <div class="nav-links" aria-label="เมนูหลัก">
+        <a href="#steps">5 ขั้นตอน</a>
+        <a href="#before">ก่อนปลูก</a>
+        <a href="#checklist">Checklist</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top" class="wrap">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">🌊 คู่มือฉบับเริ่มต้น</span>
+        <h1>ปลูกป่าชายเลน<br><em>ให้ถูกที่</em> สำคัญกว่าปลูกให้เยอะ</h1>
+        <p class="lead">เริ่มจากดูพื้นที่ น้ำขึ้นน้ำลง และชนิดไม้ที่เหมาะกับจุดนั้น แล้วค่อยลงมือปลูก พร้อมติดตามการรอดของต้นกล้าอย่างต่อเนื่อง</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#steps">ดู 5 ขั้นตอน →</a>
+          <a class="btn btn-secondary" href="#checklist">เตรียมของก่อนลงพื้นที่</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="สรุปขั้นตอน">
+        <div>
+          <div class="big-number">5</div>
+          <p>ขั้นตอนสั้น ๆ สำหรับคนที่อยากเริ่มช่วยฟื้นฟูพื้นที่ป่าชายเลนอย่างมีหลักคิด</p>
+        </div>
+        <small>สำรวจ → เลือก → ปลูก → ป้องกัน → ติดตาม</small>
+      </aside>
+    </section>
+
+    <section id="steps">
+      <div class="section-head">
+        <h2>5 ขั้นตอนจำง่าย</h2>
+        <p>การฟื้นฟูป่าชายเลนไม่ใช่แค่เอาต้นกล้าลงดิน แต่คือการทำให้ต้นไม้มีโอกาสอยู่รอดในสภาพพื้นที่จริง</p>
+      </div>
+      <div class="steps">
+        <article class="step"><div class="step-number">01</div><h3>สำรวจพื้นที่</h3><p>ดูระดับน้ำขึ้นน้ำลง ลักษณะดิน คลื่น ลม และต้นไม้เดิมที่ขึ้นอยู่รอบ ๆ</p></article>
+        <article class="step"><div class="step-number">02</div><h3>เลือกชนิดไม้</h3><p>เลือกพันธุ์ที่พบตามธรรมชาติในโซนนั้น อย่าใช้ชนิดเดียวปลูกทุกพื้นที่</p></article>
+        <article class="step"><div class="step-number">03</div><h3>ปลูกให้เหมาะ</h3><p>ปลูกช่วงที่สภาพอากาศและน้ำเหมาะสม เว้นระยะให้ต้นมีพื้นที่เติบโตและรับแสง</p></article>
+        <article class="step"><div class="step-number">04</div><h3>ลดความเสียหาย</h3><p>หลีกเลี่ยงการเหยียบย่ำรากอ่อน เก็บขยะ และใช้หลักพยุงเฉพาะจุดที่จำเป็น</p></article>
+        <article class="step"><div class="step-number">05</div><h3>กลับมาติดตาม</h3><p>เช็กอัตรารอด การกัดเซาะ ขยะ และต้นที่เสียหาย เพื่อปรับวิธีดูแลในรอบต่อไป</p></article>
+      </div>
+    </section>
+
+    <section id="before">
+      <div class="section-head">
+        <h2>ก่อนปลูก ต้องเช็กอะไร?</h2>
+        <p>พื้นที่ที่ฟื้นตัวเองได้อาจไม่จำเป็นต้องปลูกเพิ่ม การแก้สาเหตุที่ทำให้พื้นที่เสื่อมโทรมมักสำคัญกว่าจำนวนต้นกล้า</p>
+      </div>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>เช็กพื้นที่ก่อน 🌿</h3>
+          <div class="list">
+            <div class="list-item"><div class="icon">💧</div><div><strong>น้ำท่วมถึงแค่ไหน</strong><span>ความถี่และระยะเวลาที่น้ำท่วมมีผลต่อชนิดไม้ที่อยู่รอด</span></div></div>
+            <div class="list-item"><div class="icon">🪨</div><div><strong>ดินเป็นแบบไหน</strong><span>ดินเลน ดินทราย และความแน่นของดินให้สภาพแวดล้อมต่างกัน</span></div></div>
+            <div class="list-item"><div class="icon">🌱</div><div><strong>มีต้นอ่อนงอกเองไหม</strong><span>ถ้ามีการฟื้นตัวตามธรรมชาติ ควรช่วยปกป้องมากกว่ารบกวนพื้นที่เพิ่ม</span></div></div>
+          </div>
+        </div>
+        <div class="panel soft">
+          <h3>3 เรื่องที่ไม่ควรรีบทำ</h3>
+          <div class="list">
+            <div class="list-item"><div class="icon">✋</div><div><strong>ไม่ปลูกทันทีโดยไม่สำรวจ</strong><span>พื้นที่ไม่เหมาะอาจทำให้ต้นกล้าตายจำนวนมาก</span></div></div>
+            <div class="list-item"><div class="icon">🌳</div><div><strong>ไม่ยึดติดกับชนิดเดียว</strong><span>ใช้ชนิดไม้ให้สอดคล้องกับธรรมชาติของพื้นที่และคำแนะนำของผู้เชี่ยวชาญท้องถิ่น</span></div></div>
+            <div class="list-item"><div class="icon">📅</div><div><strong>ไม่จบแค่วันปลูก</strong><span>การติดตามหลังปลูกคือส่วนสำคัญของการฟื้นฟู</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="notice">💡 หากเป็นกิจกรรมจริง ควรประสานหน่วยงานท้องถิ่น ชุมชน หรือผู้ดูแลพื้นที่ก่อน เพื่อให้ชนิดไม้ ตำแหน่งปลูก และช่วงเวลาสอดคล้องกับระบบนิเวศของพื้นที่นั้น ๆ</div>
+    </section>
+
+    <section id="checklist">
+      <div class="section-head">
+        <h2>Checklist ก่อนลงพื้นที่</h2>
+        <p>ลองติ๊กให้ครบก่อนออกไปทำกิจกรรม รายการจะถูกจำไว้ในเบราว์เซอร์เครื่องนี้</p>
+      </div>
+      <div class="panel">
+        <div class="checklist" id="checklistBox">
+          <label class="check-row"><input type="checkbox" data-key="permission"><span>ประสานเจ้าของพื้นที่ / ชุมชน / หน่วยงานที่เกี่ยวข้องแล้ว</span></label>
+          <label class="check-row"><input type="checkbox" data-key="site"><span>สำรวจระดับน้ำ ดิน คลื่น และสภาพพื้นที่แล้ว</span></label>
+          <label class="check-row"><input type="checkbox" data-key="species"><span>เลือกชนิดไม้ให้เหมาะกับพื้นที่แล้ว</span></label>
+          <label class="check-row"><input type="checkbox" data-key="gear"><span>เตรียมถุงมือ รองเท้าที่เหมาะสม น้ำดื่ม และอุปกรณ์พื้นฐานแล้ว</span></label>
+          <label class="check-row"><input type="checkbox" data-key="followup"><span>มีแผนกลับมาติดตามผลหลังปลูกแล้ว</span></label>
+        </div>
+        <div class="progress" aria-label="ความคืบหน้า checklist"><div id="progressBar"></div></div>
+        <div class="progress-copy" id="progressCopy">พร้อม 0 จาก 5 ข้อ</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <strong>Mangrove Starter Guide</strong>
+      <span>เว็บตัวอย่างเพื่อการเรียนรู้ — ปรับข้อมูลให้เหมาะกับพื้นที่จริงก่อนนำไปใช้</span>
+    </div>
+  </footer>
+
+  <script>
+    const checks = [...document.querySelectorAll('.check-row input')];
+    const progressBar = document.getElementById('progressBar');
+    const progressCopy = document.getElementById('progressCopy');
+
+    function updateProgress() {
+      const done = checks.filter(input => input.checked).length;
+      checks.forEach(input => input.closest('.check-row').classList.toggle('done', input.checked));
+      progressBar.style.width = `${(done / checks.length) * 100}%`;
+      progressCopy.textContent = `พร้อม ${done} จาก ${checks.length} ข้อ`;
+    }
+
+    checks.forEach(input => {
+      const saved = localStorage.getItem(`mangrove-${input.dataset.key}`);
+      input.checked = saved === '1';
+      input.addEventListener('change', () => {
+        localStorage.setItem(`mangrove-${input.dataset.key}`, input.checked ? '1' : '0');
+        updateProgress();
+      });
+    });
+
+    updateProgress();
+  </script>
+</body>
+</html>
